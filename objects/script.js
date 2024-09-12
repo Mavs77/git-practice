@@ -18,32 +18,40 @@
 
 // console.log(sumOjectValues(salaries)); 
 
-let menu = {
-    width: 200, 
-    height: 300, 
-    title: "My menu"
-}; 
+// let menu = {
+//     width: 200, 
+//     height: 300, 
+//     title: "My menu"
+// }; 
 
-function multiplyNumeric (obj) {
-    for (let key in obj) {
-        if (typeof obj[key] === 'number') {
-            obj[key] *= 2; 
-        }
-    }
+// function multiplyNumeric (obj) {
+//     for (let key in obj) {
+//         if (typeof obj[key] === 'number') {
+//             obj[key] *= 2; 
+//         }
+//     }
 
-    return obj; 
-}
+//     return obj; 
+// }
 
-console.log(multiplyNumeric(menu))
+// console.log(multiplyNumeric(menu))
 
-let message = "Hello"; 
+// let message = "Hello"; 
 
-let phrase = message; 
+// let phrase = message; 
 
-// console.log(phrase)
+// // console.log(phrase)
 
-message = "No"
+// message = "No"
 
-console.log(phrase); 
+// console.log(phrase); 
 
-console.log(message)
+// console.log(message)
+
+const arr = [1,2,3,4,5]; 
+
+const productOfAllNums = arr.reduce((total, currentItem) => {
+    return total * currentItem
+}, 1)
+
+console.log(productOfAllNums)
