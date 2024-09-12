@@ -1,57 +1,57 @@
+let currentInput = '';
+let previousInput = '';
+let operator = null;
 
-// let salaries = {
-//     John: 100, 
-//     Ann: 160, 
-//     Pete: 130,
-// }
+function appendNumber(number) {
+  if (currentInput.includes('.') && number === '.') return; // Prevent multiple decimals
+  currentInput = currentInput + number;
+  updateDisplay();
+}
 
-// function sumOjectValues(obj){
-//     let sum = 0; 
-//     for (let key in obj) {
-//         if (typeof obj[key] === 'number') {
-//             sum += obj[key]; 
-//         }
-//     }
+function chooseOperator(op) {
+  if (currentInput === '') return;
+  if (previousInput !== '') calculate();
+  operator = op;
+  previousInput = currentInput;
+  currentInput = '';
+}
 
-//     return sum; 
-// }
+function updateDisplay() {
+  const display = document.getElementById('display');
+  display.innerText = currentInput || previousInput || '0';
+}
 
-// console.log(sumOjectValues(salaries)); 
+function clearDisplay() {
+  currentInput = '';
+  previousInput = '';
+  operator = null;
+  updateDisplay();
+}
 
-// let menu = {
-//     width: 200, 
-//     height: 300, 
-//     title: "My menu"
-// }; 
+function calculate() {
+  let result;
+  const prev = parseFloat(previousInput);
+  const current = parseFloat(currentInput);
+  if (isNaN(prev) || isNaN(current)) return;
 
-// function multiplyNumeric (obj) {
-//     for (let key in obj) {
-//         if (typeof obj[key] === 'number') {
-//             obj[key] *= 2; 
-//         }
-//     }
-
-//     return obj; 
-// }
-
-// console.log(multiplyNumeric(menu))
-
-// let message = "Hello"; 
-
-// let phrase = message; 
-
-// // console.log(phrase)
-
-// message = "No"
-
-// console.log(phrase); 
-
-// console.log(message)
-
-const arr = [1,2,3,4,5]; 
-
-const productOfAllNums = arr.reduce((total, currentItem) => {
-    return total * currentItem
-}, 1)
-
-console.log(productOfAllNums)
+  switch (operator) {
+    case '+':
+      result = prev + current;
+      break;
+    case '-':
+      result = prev - current;
+      break;
+    case '*':
+      result = prev * current;
+      break;
+    case '/':
+      result = prev / current;
+      break;
+    default:
+      return;
+  }
+  currentInput = result;
+  operator = null;
+  previousInput = '';
+  updateDisplay();
+}
