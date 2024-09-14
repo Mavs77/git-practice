@@ -1,0 +1,12 @@
+* {
+    font-size: 2rem;
+}
+
+button {
+    margin-left: 3rem;
+    margin-top: 3rem;
+}
+
+#quote {
+    margin-top: 2rem;
+}
